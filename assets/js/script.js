@@ -1,5 +1,6 @@
 // VARIABLE DECLARATION
-var yesPlay = document.querySelector("#yesButton");
+var yesPlay = document.querySelector("#startButton");
+var leaderBoard = document.querySelector("#scoresButton");
 var startGame = document.querySelector("#start-game");
 var gameElement = document.querySelector("#game");
 var timerElement = document.getElementById("timer");
@@ -15,7 +16,7 @@ var feedbackElement = document.getElementById("correctIncorrect");
 var displayScore = document.getElementById("score");
 var userName = document.getElementById("name");
 userName.style.display = "none";
-var userNameInput = document.getElementById("name-input");
+
 var submitNameButton = document.getElementById("submit-name");
 
 var questions = [
@@ -68,6 +69,10 @@ yesPlay.addEventListener("click", function (event) {
   startQuestions();
 });
 
+// button on home screen to show high scores
+leaderBoard.addEventListener("click", showLeaderBoard);
+
+// 60 second timer that has different messages depending on how much time is left
 var timeLeft = 60;
 function startTimer() {
   var timeInterval = setInterval(function () {
@@ -82,7 +87,6 @@ function startTimer() {
       timeLeft--;
     } else {
       clearInterval(timeInterval);
-      timerElement.textContent = "";
       gameElement.remove();
       inputName();
     }
@@ -136,10 +140,19 @@ function inputName() {
   userName.style.display = "";
   submitNameButton.addEventListener("click", function (event) {
     event.preventDefault();
-    console.log(userNameInput);
+    var userNameInput = document.querySelector("#name-input").value;
+    localStorage.setItem("name", userNameInput);
+    localStorage.setItem("score", score);
+    showLeaderBoard();
   });
 
   // local storage of name (key) and score (value)
   // getItem - retreive key/value pair from local storage
   // setItem - change key/value pair in local storage
+}
+
+function showLeaderBoard() {
+  var lastUserName = localStorage.getItem("name");
+  var lastScore = localStorage.getItem("score");
+  alert(lastUserName + " " + lastScore);
 }
