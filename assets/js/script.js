@@ -12,6 +12,11 @@ var answerDElement = document.getElementById("answerD");
 // make the answer element hidden when the page is first loaded
 answerElement.style.display = "none";
 var feedbackElement = document.getElementById("correctIncorrect");
+var displayScore = document.getElementById("score");
+var userName = document.getElementById("name");
+userName.style.display = "none";
+var userNameInput = document.getElementById("name-input");
+var submitNameButton = document.getElementById("submit-name");
 
 var questions = [
   (question1 = {
@@ -87,11 +92,6 @@ var i = 0;
 var score = 0;
 
 function startQuestions() {
-  // end the game when the questions run out
-  if (i === questions.length) {
-    gameElement.remove();
-    inputName();
-  }
   // refers to the value that corresponds to the question property of the ith question
   questionElement.textContent = questions[i].question;
   // display hidden element as an empty string so it can be filled with answers
@@ -103,29 +103,43 @@ function startQuestions() {
   answerDElement.textContent = Object.values(questions[i])[4];
   // add one even listener to all the answer buttons and run function called checkCorrect
   answerElement.addEventListener("click", checkCorrect);
-  function checkCorrect(event) {
-    // took forever to figure this out --
-    // have to remove the event listener otherwise each iteration the click event fires multiple times
-    answerElement.removeEventListener("click", checkCorrect);
-    // store text content of user click
-    var userClick = event.target.textContent;
-    // check if user was correct
-    if (userClick === questions[i].correct) {
-      score = score + 50;
-      feedbackElement.textContent = "Correct!";
-    } else if (userClick !== questions[i].correct) {
-      // otherwise user was incorrect and run the following to reduce time
-      feedbackElement.textContent = "Incorrect!";
-      timeLeft = timeLeft - 5;
-    }
-    i++;
-    startQuestions();
-
-    //   function inputName() {
-    //     // end the game and present option to input name for stat keeping
-    //     // local storage of name (key) and score (value)
-    //     // getItem - retreive key/value pair from local storage
-    //     // setItem - change key/value pair in local storage
-    //   }
+}
+function checkCorrect(event) {
+  // took forever to figure this out --
+  // have to remove the event listener otherwise each iteration the click event fires multiple times
+  answerElement.removeEventListener("click", checkCorrect);
+  // store text content of user click
+  var userClick = event.target.textContent;
+  // check if user was correct
+  if (userClick === questions[i].correct) {
+    score = score + 50;
+    feedbackElement.textContent = "Correct!";
+  } else if (userClick !== questions[i].correct) {
+    // otherwise user was incorrect and run the following to reduce time
+    feedbackElement.textContent = "Incorrect!";
+    timeLeft = timeLeft - 20;
   }
+  i++;
+  // end the game when the questions run out
+  if (i === questions.length) {
+    gameElement.remove();
+    inputName();
+  } else {
+    startQuestions();
+  }
+}
+
+function inputName() {
+  // end the game and present option to input name for stat keeping
+  displayScore.textContent = "Score: " + score;
+  // form for user to input name
+  userName.style.display = "";
+  submitNameButton.addEventListener("click", function (event) {
+    event.preventDefault();
+    console.log(userNameInput);
+  });
+
+  // local storage of name (key) and score (value)
+  // getItem - retreive key/value pair from local storage
+  // setItem - change key/value pair in local storage
 }
