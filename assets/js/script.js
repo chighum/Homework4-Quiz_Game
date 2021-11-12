@@ -32,8 +32,10 @@ var highScores = document.getElementById("high-scores");
 highScores.style.display = "none";
 var highScoreList = document.getElementById("score-list");
 var homeButton = document.getElementById("home-button");
+var resetButton = document.getElementById("reset-button");
 
 // get score history from local storage and store as an array in scoreHistory
+
 var scoreHistory = JSON.parse(localStorage.getItem("high-scores")) || [];
 
 // question set declared as objects inside an array
@@ -243,4 +245,11 @@ function showLeaderBoard() {
 homeButton.addEventListener("click", function () {
   startGame.style.display = "";
   highScores.style.display = "none";
+});
+
+resetButton.addEventListener("click", function () {
+  localStorage.clear();
+  scoreHistory = JSON.parse(localStorage.getItem("high-scores")) || [];
+  renderScores();
+  showLeaderBoard();
 });
