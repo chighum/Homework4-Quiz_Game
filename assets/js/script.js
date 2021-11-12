@@ -220,6 +220,8 @@ function renderScores() {
   for (var x = 0; x < scoreHistory.length; x++) {
     // var singleScoreHistory = scoreHistory[x];
     var listItem = document.createElement("li");
+    listItem.style.listStyle = "none";
+    listItem.style.textAlign = "center";
     listItem.setAttribute("data-index", x);
     listItem.textContent =
       scoreHistory[x].name + " --- " + scoreHistory[x].score;
