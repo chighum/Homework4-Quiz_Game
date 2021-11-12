@@ -11,83 +11,103 @@
     />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
-  <body>
-    <div id="start-game">
-      <h1>Welcome to the JavaScript Quiz Game</h1>
-      <h2>Would you like to test your JS knowledge?</h2>
-      <div>
+  <body class="container">
+    <div id="start-game" class="my-3 mx-3 container">
+      <h1 class="my-3 row justify-content-center">
+        Welcome to the JavaScript Quiz Game
+      </h1>
+      <h4 class="my-3 row justify-content-center">
+        This quiz consists of 5 multiple choices questions on JavaScript
+        Fundamentals. You have 60 seconds to take the quiz; however, for every
+        question you get wrong 10 seconds are deducted from the timer.
+        Meanwhile, 50 points are added to your score for every correct answer.
+      </h4>
+      <h2 class="my-3 row justify-content-center">
+        Think you have what it takes to top the leaderboard?
+      </h2>
+      <div class="row justify-content-evenly">
         <button
           id="start-button"
-          class="bg-success p-2 rounded text-dark bg-opacity-25"
+          class="col-4 bg-success p-2 rounded text-dark bg-opacity-25"
         >
           Start Quiz
         </button>
         <button
           id="scores-button"
-          class="bg-warning p-2 rounded text-dark bg-opacity-25"
+          class="col-4 bg-warning p-2 rounded text-dark bg-opacity-25"
         >
           Score History
         </button>
       </div>
     </div>
-    <div id="game">
-      <p id="timer"></p>
-      <h1 id="question"></h1>
+    <div id="game" class="mx-3 my-3 container">
+      <p id="timer" class="row justify-content-end text-danger"></p>
+      <h1 id="question" class=""></h1>
       <ol id="answers" type="a">
         <li class="my-3">
           <button
             id="answerA"
-            class="bg-success p-2 rounded text-dark bg-opacity-25"
+            class="col-2 bg-success p-2 rounded text-dark bg-opacity-25"
           ></button>
         </li>
         <li class="my-3">
           <button
             id="answerB"
-            class="bg-danger p-2 rounded text-dark bg-opacity-25"
+            class="col-2 bg-danger p-2 rounded text-dark bg-opacity-25"
           ></button>
         </li>
         <li class="my-3">
           <button
             id="answerC"
-            class="bg-warning p-2 rounded text-dark bg-opacity-25"
+            class="col-2 bg-warning p-2 rounded text-dark bg-opacity-25"
           ></button>
         </li>
         <li class="my-3">
           <button
             id="answerD"
-            class="bg-primary p-2 rounded text-dark bg-opacity-25"
+            class="col-2 bg-primary p-2 rounded text-dark bg-opacity-25"
           ></button>
         </li>
       </ol>
       <p id="correct-incorrect"></p>
     </div>
-    <div id="name-score" class="container">
-      <h1 id="score" class="row"></h1>
-      <h1 id="name" class="row">
-        <label for="name-input"
+    <div id="name-score" class="my-5 container">
+      <h1 id="score" class="row justify-content-center"></h1>
+      <h5 class="row justify-content-center">
+        Enter your name to see where you rank
+      </h5>
+      <h5 id="name">
+        <label for="name-input" class="row justify-content-center"
           >Name:
           <input
             type="text"
-            class="form-input"
+            class="form-input col-3"
             name="name-input"
             id="name-input"
             placeholder="Enter name"
           />
           <button
             id="submit-name"
-            class="bg-success p-2 rounded text-dark bg-opacity-25"
+            class="col-2 bg-success rounded text-dark bg-opacity-25"
           >
             Submit
           </button>
         </label>
-      </h1>
+      </h5>
     </div>
-    <div id="high-scores">
-      <h1>Score History</h1>
-      <ol id="score-list"></ol>
+    <div id="high-scores" class="row justify-content-center">
+      <h1 class="row justify-content-center">Score History</h1>
+      <ul id="score-list" class="row justify-content-center"></ul>
       <button
         id="home-button"
-        class="bg-success rounded text-dark bg-opacity-25"
+        class="
+          col-2
+          justify-content-center
+          bg-success
+          rounded
+          text-dark
+          bg-opacity-25
+        "
       >
         Home
       </button>

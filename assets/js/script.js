@@ -22,6 +22,7 @@ var feedbackElement = document.getElementById("correct-incorrect");
 var nameScoreElement = document.getElementById("name-score");
 var displayScore = document.getElementById("score");
 var userName = document.getElementById("name");
+nameScoreElement.style.display = "none";
 userName.style.display = "none";
 var submitNameButton = document.getElementById("submit-name");
 var nameInput = document.getElementById("name-input");
@@ -111,24 +112,37 @@ function startTimer() {
     timeLeft--;
     if (timeLeft > 10) {
       timerElement.textContent = timeLeft + " seconds left";
+    } else if (timeLeft > 5) {
+      timerElement.style.fontWeight = "bold";
+      timerElement.textContent = "Hurry! Only " + timeLeft + " seconds left!";
+    } else if (timeLeft > 3) {
+      timerElement.style.fontWeight = "bold";
+      timerElement.style.fontStyle = "italic";
+      timerElement.textContent = "Hurry! Only " + timeLeft + " seconds left!";
     } else if (timeLeft > 1) {
+      timerElement.style.fontWeight = "bold";
+      timerElement.style.fontStyle = "italic";
+      timerElement.style.fontSize = "30px";
       timerElement.textContent = "Hurry! Only " + timeLeft + " seconds left!";
     } else if (timeLeft === 1) {
+      timerElement.style.fontWeight = "bold";
+      timerElement.style.fontStyle = "italic";
+      timerElement.style.fontSize = "30px";
       timerElement.textContent = "Hurry! Only " + timeLeft + " second left!";
     }
     if (timeLeft >= 0) {
       // if the questions run out and time is left clear the time interval and show input for stat keeping
       if (gameOver && timeLeft > 0) {
+        inputName();
         clearInterval(timeInterval);
         gameElement.style.display = "none";
-        inputName();
       }
     }
     // end the game when the timer runs out and give option to input name for stat keeping
     if (timeLeft === 0) {
+      inputName();
       clearInterval(timeInterval);
       gameElement.style.display = "none";
-      inputName();
     }
   }, 1000);
 }
@@ -156,9 +170,15 @@ function checkCorrect(event) {
   // check if user was correct and add points to score
   if (userClick === questions[i].correct) {
     score = score + 50;
+    feedbackElement.style.color = "green";
+    feedbackElement.style.fontWeight = "bold";
+    feedbackElement.style.fontStyle = "normal";
     feedbackElement.textContent = "Correct!";
   } else {
     // otherwise user was incorrect and reduce time
+    feedbackElement.style.color = "red";
+    feedbackElement.style.fontWeight = "normal";
+    feedbackElement.style.fontStyle = "italic";
     feedbackElement.textContent = "Incorrect!";
     timeLeft = timeLeft - 10;
   }
