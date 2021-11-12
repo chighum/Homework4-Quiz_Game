@@ -3,7 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <title>JS Quiz</title>
-    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="./assets/css/style.css" />
   </head>
   <body>
@@ -11,42 +16,87 @@
       <h1>Welcome to the JavaScript Quiz Game</h1>
       <h2>Would you like to test your JS knowledge?</h2>
       <div>
-        <button id="start-button">Start Quiz</button>
-        <button id="scores-button">Score History</button>
+        <button
+          id="start-button"
+          class="bg-success p-2 rounded text-dark bg-opacity-25"
+        >
+          Start Quiz
+        </button>
+        <button
+          id="scores-button"
+          class="bg-warning p-2 rounded text-dark bg-opacity-25"
+        >
+          Score History
+        </button>
       </div>
     </div>
     <div id="game">
       <p id="timer"></p>
       <h1 id="question"></h1>
       <ol id="answers" type="a">
-        <li><button id="answerA"></button></li>
-        <li><button id="answerB"></button></li>
-        <li><button id="answerC"></button></li>
-        <li><button id="answerD"></button></li>
+        <li class="my-3">
+          <button
+            id="answerA"
+            class="bg-success p-2 rounded text-dark bg-opacity-25"
+          ></button>
+        </li>
+        <li class="my-3">
+          <button
+            id="answerB"
+            class="bg-danger p-2 rounded text-dark bg-opacity-25"
+          ></button>
+        </li>
+        <li class="my-3">
+          <button
+            id="answerC"
+            class="bg-warning p-2 rounded text-dark bg-opacity-25"
+          ></button>
+        </li>
+        <li class="my-3">
+          <button
+            id="answerD"
+            class="bg-primary p-2 rounded text-dark bg-opacity-25"
+          ></button>
+        </li>
       </ol>
       <p id="correct-incorrect"></p>
     </div>
-    <div id="name-score">
-      <h1 id="score"></h1>
-      <h1 id="name">
+    <div id="name-score" class="container">
+      <h1 id="score" class="row"></h1>
+      <h1 id="name" class="row">
         <label for="name-input"
           >Name:
           <input
             type="text"
-            class="form-input w-100"
+            class="form-input"
             name="name-input"
             id="name-input"
             placeholder="Enter name"
           />
-          <button id="submit-name">Submit</button>
+          <button
+            id="submit-name"
+            class="bg-success p-2 rounded text-dark bg-opacity-25"
+          >
+            Submit
+          </button>
         </label>
       </h1>
     </div>
     <div id="high-scores">
       <h1>Score History</h1>
       <ol id="score-list"></ol>
-      <button id="home-button">Home</button>
+      <button
+        id="home-button"
+        class="bg-success rounded text-dark bg-opacity-25"
+      >
+        Home
+      </button>
     </div>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+      crossorigin="anonymous"
+    ></script>
     <script src="./assets/js/script.js"></script>
   </body>
 </html>
