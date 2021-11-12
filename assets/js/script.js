@@ -112,6 +112,8 @@ function startTimer() {
     timeLeft--;
     if (timeLeft > 10) {
       timerElement.textContent = timeLeft + " seconds left";
+      timerElement.style.fontWeight = "normal";
+      timerElement.style.fontStyle = "normal";
     } else if (timeLeft > 5) {
       timerElement.style.fontWeight = "bold";
       timerElement.textContent = "Hurry! Only " + timeLeft + " seconds left!";
