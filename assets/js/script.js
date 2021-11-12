@@ -24,6 +24,7 @@ var displayScore = document.getElementById("score");
 var userName = document.getElementById("name");
 userName.style.display = "none";
 var submitNameButton = document.getElementById("submit-name");
+var nameInput = document.getElementById("name-input");
 
 // 4th page - leaderboard
 var highScores = document.getElementById("high-scores");
@@ -185,7 +186,8 @@ function inputName() {
 // add the most recent score to local storage as an object
 function saveScores() {
   submitNameButton.removeEventListener("click", saveScores);
-  var userNameInput = document.querySelector("#name-input").value;
+  var userNameInput = nameInput.value;
+  nameInput.value = "";
   var userNameScore = { name: userNameInput, score: score };
   scoreHistory.push(userNameScore);
   localStorage.setItem("high-scores", JSON.stringify(scoreHistory));
@@ -202,6 +204,9 @@ function renderScores() {
     listItem.textContent =
       scoreHistory[x].name + " --- " + scoreHistory[x].score;
     highScoreList.appendChild(listItem);
+    scoreHistory.sort(function (a, b) {
+      return b - a;
+    });
   }
 }
 
@@ -209,8 +214,6 @@ function showLeaderBoard() {
   nameScoreElement.style.display = "none";
   startGame.style.display = "none";
   highScores.style.display = "";
-
-  // alert(lastUserName + " " + lastScore);
 }
 
 homeButton.addEventListener("click", function () {
