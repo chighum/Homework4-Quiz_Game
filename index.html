@@ -11,8 +11,8 @@
       <h1>Welcome to the JavaScript Quiz Game</h1>
       <h2>Would you like to test your JS knowledge?</h2>
       <div>
-        <button id="startButton">Start Quiz</button>
-        <button id="scoresButton">High Scores</button>
+        <button id="start-button">Start Quiz</button>
+        <button id="scores-button">High Scores</button>
       </div>
     </div>
     <div id="game">
@@ -24,9 +24,9 @@
         <li><button id="answerC"></button></li>
         <li><button id="answerD"></button></li>
       </ol>
-      <p id="correctIncorrect"></p>
+      <p id="correct-incorrect"></p>
     </div>
-    <div>
+    <div id="name-score">
       <h1 id="score"></h1>
       <h1 id="name">
         <label for="name-input"
@@ -41,6 +41,11 @@
           <button id="submit-name">Submit</button>
         </label>
       </h1>
+    </div>
+    <div id="high-scores">
+      <h1>High Scores</h1>
+      <ol id="score-list"></ol>
+      <button id="home-button">Home</button>
     </div>
     <script src="./assets/js/script.js"></script>
   </body>
